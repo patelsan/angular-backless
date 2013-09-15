@@ -25,5 +25,17 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
               }
           });
 
+          $httpBackend.whenPOST('/api/signup').respond(function(method, url, data){
+              var request = JSON.parse(data);
+              var searchReslult = _.findWhere(userRepository, {email: request.email});
+              if(searchReslult){
+                  return [200, {registered: false, message: 'Sorry, user with the email ' + request.email + ' is already registered.'}];
+              }
+              else{
+                userRepository.push(request);
+                return [200, {registered: true, message: 'Thank you for signing up.'}];
+              }
+          });
+
         $httpBackend.whenGET(/\partials\//).passThrough();
     });

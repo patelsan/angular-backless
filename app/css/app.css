@@ -32,3 +32,12 @@ body {
   content: "";
   padding: 0;
 }
+
+.user-name {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: midnightblue;
+}
+
+
