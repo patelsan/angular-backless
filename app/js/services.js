@@ -20,10 +20,11 @@ services.factory('authService', ['$http','$q', function($http, $q){
         $http.post('/api/signin',user).
             success(function(data){
                 isSignedIn = data.authenticated;
-                fullName = data.fullName;
+                fasad.fullName = data.fullName;
+                fasad.userId = data.id;
 
                 fasad.isSignedIn = data.authenticated;
-                deferred.resolve({authenticated: data.authenticated, message: data.message});
+                deferred.resolve({authenticated: data.authenticated, message: data.message, name: data.fullName});
             }).
             error(function(error){
                 deferred.resolve({authenticated: false, message: 'Error occurred while authenticating.'});
@@ -56,8 +57,15 @@ services.factory('authService', ['$http','$q', function($http, $q){
         signIn: function(user){return authenticate(user);},
         signUp: function(user){return register(user);},
         logOut: function(){ return logOut()},
-        isSignedIn: isSignedIn
+        isSignedIn: false,
+        fullName: '',
+        userId: null
     };
 
     return fasad;
+}]);
+
+//Models/ Resources
+services.factory('Activity', ['$resource','authService', function($resource, authService){
+    return $resource('api/:userId/activity', {userId: authService.userId});
 }]);

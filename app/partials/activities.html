@@ -1,6 +1,54 @@
-<div class="row">
+<!--<div class="row">
     <div class="col-lg-offset-4 col-lg-8">
         <h1>This page requires you to be logged in</h1>
         <h3>If you are not logged in, you should be redirected to the login view</h3>
+    </div>
+</div>-->
+
+<div class="row">
+    <div class="col-sm-3">
+        <datepicker ng-model="workoutDate"></datepicker>
+    </div>
+    <div class="col-sm-4"><h3>Create Activity</h3>
+        <div class="alert alert-danger" ng-show="message.length > 0">{{message}}</div>
+        <h3>{{workoutDate | date: 'MMMM, dd'}}</h3>
+        <h3>{{workoutDate}}</h3>
+        <form name="activity" role="form">
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <div id="duration" class="input-group duration bootstrap-timepicker">
+                    <input class="form-control input-sm" type="text" timepicker ng-model='duration' required />
+                    <span class="input-group-addon glyphicon glyphicon-time"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="calories">Calories Burned</label>
+                <input id="calories" class="form-control input-sm" type="number" ng-model='calories' />
+            </div>
+            <!--Activitites list-->
+            <div class="btn-group activities" data-toggle="buttons">
+                <label class="btn btn-primary activity">
+                    <span class="glyphicon glyphicon-thumbs-up"></span><br />
+                    <input class="x" type="radio" name="activities" id="Running"> Running
+                </label>
+                <label class="btn btn-primary activity">
+                    <input type="radio" name="activities" id="Swimming"> Walking
+                </label>
+                <label class="btn btn-primary activity">
+                    <input type="radio" name="activities" id="option3"> Cycling
+                </label>
+                <label class="btn btn-primary activity">
+                    <input type="radio" name="activities" id="option3"> Skating
+                </label>
+                <label class="btn btn-primary activity">
+                    <input type="radio" name="activities" id="option3"> Swimming
+                </label>
+                <label class="btn btn-primary activity">
+                    <input type="radio" name="activities" id="option3"> Elliptical
+                </label>
+            </div>
+
+            <button ng-click='authenticate(user)' ng-disabled="activity.$invalid" class="btn btn-primary">Add</button>
+        </form>
     </div>
 </div>

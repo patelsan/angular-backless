@@ -17,7 +17,7 @@ var ctrlModule = angular.module('myApp.controllers', []).
         $scope.authenticate = function(user){
             authService.signIn(user).then(function(status){
                 if(status.authenticated === true){
-                    $location.path('/activities');
+                    $location.path('/dashboard');
                     noty({text: 'Successfully logged in.', type:'success', layout:'topRight', timeout: 2000});
                 }
                 else{
@@ -29,6 +29,7 @@ var ctrlModule = angular.module('myApp.controllers', []).
         $scope.register = function (newUser) {
             authService.signUp(newUser).then(function(status){
                 if(status.registered === true){
+                    authService.signIn({email: newUser.email, password: newUser.password});
                     $location.path('/activities');
                     noty({text: 'Successfully signed up.', type:'success', layout:'topRight', timeout: 2000});
                 }
@@ -43,3 +44,13 @@ var ctrlModule = angular.module('myApp.controllers', []).
             authService.logOut();
         };
     }]);
+
+ctrlModule.controller('ActivitiesController',['$scope','Activity', 'moment','$filter', function($scope, activity, moment, $filter){
+    $scope.workoutDate = new Date();//.toDateString();  //$filter('date')(new Date(), 'MMMM, dd');
+    $scope.newActivity = {};
+
+}]);
+
+ctrlModule.controller('DashboardController', ['$scope','Activity','moment', function($scope, activity, moment){
+    $scope.pastActivities = activity.query();
+}]);

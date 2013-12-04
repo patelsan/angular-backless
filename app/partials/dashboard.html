@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>When</th>
+        <th>Activity</th>
+        <th>Duration</th>
+        <th>Calories</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="activity in pastActivities">
+        <td>{{activity.date}}</td>
+        <td>{{activity.activityType}}</td>
+        <td>{{activity.duration}}</td>
+        <td>{{activity.calories}}</td>
+    </tr>
+    </tbody>
+</table>

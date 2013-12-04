@@ -43,3 +43,13 @@ describe('my app', function() {
 
   });
 });
+
+/*
+LogIn and SignUP should be visible
+User should be able to signup
+Message should be shown to the user credentials are incorrect
+User should be login with the correct credentials
+Show activities tab, once user is logged in
+User should be able to signOut
+Once logged in, user's name must be displayed on upper right corner
+ */

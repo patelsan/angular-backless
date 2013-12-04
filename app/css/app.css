@@ -40,4 +40,27 @@ body {
     color: midnightblue;
 }
 
+/* date picker style */
+.datepicker-container{
+    width: 220px;
+    border-radius: 6px;
+    border: 1px solid #C9C9C9;
+}
 
+.duration{
+    width: 120px !important;
+}
+
+.activity{
+    margin: 8px;
+
+}
+
+.activities > .btn{
+    border-radius: 4px !important;
+    height: 98px;
+}
+
+.activity > .glyphicon{
+    font-size: 38px;
+}
