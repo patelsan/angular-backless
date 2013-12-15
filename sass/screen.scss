@@ -1,0 +1,84 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+//@import "compass/reset";
+@import "compass";
+
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+body{
+  background-color: #EFEDDF;
+}
+
+.activityTypes{
+  @include inline-block-list;
+  width: 100%;
+  padding: 4px 15px;
+
+  li{
+    background-color: #FFF;
+    padding: 8px;
+    margin: 3px;
+    margin-right: 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    width: 135px;
+    line-height: 1.5em;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: #3F4944;
+    cursor: pointer;
+  }
+
+  li.active{
+    background-color: #3F4944;
+    color: #FFF;
+  }
+
+}
+
+.panel-success>.panel-heading {
+  color: #636365;
+  background-color: #E4E3D5;
+  border-color: #DDDDDD;
+}
+
+.statistics{
+  .fa { font-size: 50px;text-align: right;position: absolute;top: 7px;right: 27px;outline: none; }
+  a { transition: all .3s ease;-webkit-transition: all .3s ease;-moz-transition: all .3s ease;-o-transition: all .3s ease; }
+  /* Duration */
+  a.duration i,.duration h4.list-group-item-heading { color:#E48A07; }
+  a.duration:hover { background-color:#E48A07; }
+  a.duration:hover * { color:#FFF; }
+  /* Distance */
+  a.distance i,.distance h4.list-group-item-heading { color:#3b5998; }
+  a.distance:hover { background-color:#3b5998; }
+  a.distance:hover * { color:#FFF; }
+  /* Calories */
+  a.calories i,.calories h4.list-group-item-heading { color:#dd4b39; }
+  a.calories:hover { background-color:#dd4b39; }
+  a.calories:hover * { color:#FFF; }
+
+
+  .icon {
+    font-size: 36px;
+    text-align: right;
+    position: absolute;
+    top: 7px;
+    right: 27px;
+    outline: none;
+  }
+
+  h4 {
+    font-size: 23px;
+    line-height: 0.8em;
+  }
+
+  p {
+    font-size: 16px;
+    color: #3F4944;
+  }
+}
