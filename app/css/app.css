@@ -47,10 +47,6 @@ body {
     border: 1px solid #C9C9C9;
 }
 
-.duration{
-    width: 120px !important;
-}
-
 .activity{
     margin: 8px;
 
@@ -64,3 +60,6 @@ body {
 .activity > .glyphicon{
     font-size: 38px;
 }
+
+/* Dashboard */
+

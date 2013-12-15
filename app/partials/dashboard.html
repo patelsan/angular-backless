@@ -1,18 +1,52 @@
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>When</th>
-        <th>Activity</th>
-        <th>Duration</th>
-        <th>Calories</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="activity in pastActivities">
-        <td>{{activity.date}}</td>
-        <td>{{activity.activityType}}</td>
-        <td>{{activity.duration}}</td>
-        <td>{{activity.calories}}</td>
-    </tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group statistics">
+            <a class="list-group-item calories">
+                <h3 class="pull-right">
+                    <i class="icon glyphicon glyphicon-fire"></i>
+                </h3>
+                <h4 class="list-group-item-heading count">1000</h4>
+                <p class="list-group-item-text">Calories</p>
+            </a>
+            <a class="list-group-item duration">
+                <h3 class="pull-right">
+                    <i class="icon glyphicon glyphicon-time"></i>
+                </h3>
+                <h4 class="list-group-item-heading count">1000</h4>
+                <p class="list-group-item-text">Minutes</p>
+            </a>
+            <a class="list-group-item distance">
+                <h3 class="pull-right">
+                    <i class="icon glyphicon glyphicon-road"></i>
+                </h3>
+                <h4 class="list-group-item-heading count">1000</h4>
+                <p class="list-group-item-text">Miles</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <canvas id="calories-chart" width="450" height="190"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>When</th>
+            <th>Activity</th>
+            <th>Duration</th>
+            <th>Calories</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="activity in pastActivities">
+            <td>{{activity.workoutDate | fromNow}}</td>
+            <td>{{activity.activityType}}</td>
+            <td>{{activity.duration}}</td>
+            <td>{{activity.calories}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

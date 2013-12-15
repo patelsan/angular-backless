@@ -17,7 +17,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
           var activitiesRepository = new utils.Repository();
 
           userRepository.save({email: 'x', password:'x', fullName: 'Test User'});
-          activitiesRepository.save({userId: 101,date: 'Nov, 28',activityType: 'Running', duration: '0:30', calories: 356});
+          activitiesRepository.save({userId: 101,workoutDate: 'Nov, 28',activityType: 'Running', duration: '0:30', calories: 356});
 
           $httpBackend.whenPOST('/api/signin').respond(function(method, url, data){
               var request = JSON.parse(data);
@@ -47,11 +47,21 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
          $httpBackend.whenGET(/api\/(\d+)\/activity/).respond(function(method, url, data){
              var searchResult = url.match(/api\/(\d+)\/activity/);
              var userId = parseInt(searchResult[1]);
-             var user = userRepository.find({id: userId});
-             console.log(user);
+             //var user = userRepository.find({id: userId});
 
              return [200, activitiesRepository.findAll({userId: userId})];
          });
+
+        $httpBackend.whenPOST(/api\/(\d+)\/activity/).respond(function(method, url, data){
+            data = JSON.parse(data);
+            var searchResult = url.match(/api\/(\d+)\/activity/);
+            var userId = parseInt(searchResult[1]);
+
+            data.userId = userId;
+            console.log(data);
+            var savedActivity = activitiesRepository.save(data);
+            return [200, savedActivity];
+        });
 
         $httpBackend.whenGET(/\partials\//).passThrough();
     });

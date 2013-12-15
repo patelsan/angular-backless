@@ -20,6 +20,8 @@ utils.Repository = (function(){
 
             this.items[itemIndex] = item;
         }
+
+        return item;
     };
 
     Repository.prototype.getAll = function(){

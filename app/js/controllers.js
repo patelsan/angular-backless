@@ -46,11 +46,29 @@ var ctrlModule = angular.module('myApp.controllers', []).
     }]);
 
 ctrlModule.controller('ActivitiesController',['$scope','Activity', 'moment','$filter', function($scope, activity, moment, $filter){
-    $scope.workoutDate = new Date();//.toDateString();  //$filter('date')(new Date(), 'MMMM, dd');
-    $scope.newActivity = {};
+    var newActivity = {workoutDate: new Date(), activityType: 'Running'};
+    $scope.newActivity = newActivity;
+    $scope.activityTypes = ['Running', 'Walking', 'Cycling', 'Hiking', 'Swimming', 'Skating'];  //this could be pulled from the backend
+
+    $scope.save = function(){
+      activity.save({}, newActivity);
+    };
 
 }]);
 
 ctrlModule.controller('DashboardController', ['$scope','Activity','moment', function($scope, activity, moment){
     $scope.pastActivities = activity.query();
+
+    var data = {
+        labels : ["Mon.","Tue.","Wed.","Thu.","Fri.","Sat.","Sun."],
+        datasets : [
+            {
+                fillColor : "#dd4b39",
+                strokeColor : "#dd4b39",
+                data : [65,59,90,81,56,55,40]
+            }
+        ]
+    }
+    var ctx = $("#calories-chart").get(0).getContext("2d");
+    var chart = new Chart(ctx).Bar(data);
 }]);

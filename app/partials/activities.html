@@ -5,50 +5,78 @@
     </div>
 </div>-->
 
+
+<div class='row'>
+    <div class="col-md-3 col-sm-3">
+        <datepicker ng-model="newActivity.workoutDate"></datepicker>
+    </div>
+
+    <div class="col-md-5 col-sm-4">
+        <div class="alert alert-danger" ng-show="message.length > 0">{{message}}</div>
+        <h3>{{newActivity.workoutDate | date: 'MMMM, dd'}}</h3>
+
+        <form name="activity" role="form">
+            <div class="form-group col-md-4">
+                <label for="duration">Duration</label>
+                <input type="text" class="form-control" id="duration" placeholder="Duration" ng-model='newActivity.duration' required />
+            </div>
+            <div class="form-group col-md-4">
+                <label for="distance">Distance</label>
+                <input type="number" class="form-control" id="distance" placeholder="Distance" ng-model='newActivity.distance'/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="calories">Calories</label>
+                <input type="number" class="form-control" id="calories" placeholder="Calories" ng-model='newActivity.calories'/>
+            </div>
+
+        </form>
+    </div>
+
+    <div class='col-md-6'>
+        <ul class='activityTypes'>
+            <li ng-repeat="type in activityTypes" ng-click="newActivity.activityType=type" ng-class="{'active': newActivity.activityType == type}">{{type}}</li>
+        </ul>
+    </div>
+
+    <div class="col-md-5">
+        <button ng-click='save()' ng-disabled="activity.$invalid" class="btn btn-primary btn-lg btn-block">Add</button>
+    </div>
+</div>
+
+
+<!--Orignal
+
 <div class="row">
     <div class="col-sm-3">
-        <datepicker ng-model="workoutDate"></datepicker>
+        <datepicker ng-model="newActivity.workoutDate"></datepicker>
     </div>
     <div class="col-sm-4"><h3>Create Activity</h3>
         <div class="alert alert-danger" ng-show="message.length > 0">{{message}}</div>
-        <h3>{{workoutDate | date: 'MMMM, dd'}}</h3>
-        <h3>{{workoutDate}}</h3>
+        <h3>{{newActivity.workoutDate | date: 'MMMM, dd'}}</h3>
         <form name="activity" role="form">
             <div class="form-group">
                 <label for="duration">Duration</label>
                 <div id="duration" class="input-group duration bootstrap-timepicker">
-                    <input class="form-control input-sm" type="text" timepicker ng-model='duration' required />
+                    <input class="form-control input-sm" type="text" timepicker ng-model='newActivity.duration' required />
                     <span class="input-group-addon glyphicon glyphicon-time"></span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="calories">Calories Burned</label>
-                <input id="calories" class="form-control input-sm" type="number" ng-model='calories' />
+                <input class="form-control input-sm" type="number" ng-model='newActivity.calories' />
             </div>
-            <!--Activitites list-->
-            <div class="btn-group activities" data-toggle="buttons">
-                <label class="btn btn-primary activity">
-                    <span class="glyphicon glyphicon-thumbs-up"></span><br />
-                    <input class="x" type="radio" name="activities" id="Running"> Running
-                </label>
-                <label class="btn btn-primary activity">
-                    <input type="radio" name="activities" id="Swimming"> Walking
-                </label>
-                <label class="btn btn-primary activity">
-                    <input type="radio" name="activities" id="option3"> Cycling
-                </label>
-                <label class="btn btn-primary activity">
-                    <input type="radio" name="activities" id="option3"> Skating
-                </label>
-                <label class="btn btn-primary activity">
-                    <input type="radio" name="activities" id="option3"> Swimming
-                </label>
-                <label class="btn btn-primary activity">
-                    <input type="radio" name="activities" id="option3"> Elliptical
-                </label>
+            <div class="form-group">
+                <label for="calories">Calories Burned</label>
+                <input class="form-control input-sm" type="number" ng-model='newActivity.distance' />
             </div>
 
-            <button ng-click='authenticate(user)' ng-disabled="activity.$invalid" class="btn btn-primary">Add</button>
+            <ul class='activityTypes'>
+                <li ng-repeat="type in activityTypes" ng-click="newActivity.activityType=type" ng-class="{'active': newActivity.activityType == type}">{{type}}</li>
+            </ul>
+
+            <button ng-click='save()' ng-disabled="activity.$invalid" class="btn btn-primary">Add</button>
         </form>
     </div>
 </div>
+
+-->
