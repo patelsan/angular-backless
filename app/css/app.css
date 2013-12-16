@@ -61,5 +61,7 @@ body {
     font-size: 38px;
 }
 
-/* Dashboard */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
 

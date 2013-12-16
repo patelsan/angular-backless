@@ -82,3 +82,35 @@ body{
     color: #3F4944;
   }
 }
+
+.screenshot {
+  width: 820px;
+
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin: 30px 0;
+  padding: 10px;
+  background: #FFF;
+  border: 1px solid #CCC;
+  position: relative;
+  display: block;
+}
+
+.title{
+  color: #3F4944;
+  h1{
+    font-size: 42px;
+    font-family: "calluna",serif;
+  }
+
+  h2{
+    font-size: 34px;
+    font-style: italic;
+    font-family: "calluna",serif;
+  }
+}
+
+.home{
+  //background-color: #FFFFFF;
+}

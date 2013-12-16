@@ -5,21 +5,21 @@
                 <h3 class="pull-right">
                     <i class="icon glyphicon glyphicon-fire"></i>
                 </h3>
-                <h4 class="list-group-item-heading count">1000</h4>
+                <h4 class="list-group-item-heading count">{{statistics.calories}}</h4>
                 <p class="list-group-item-text">Calories</p>
             </a>
             <a class="list-group-item duration">
                 <h3 class="pull-right">
                     <i class="icon glyphicon glyphicon-time"></i>
                 </h3>
-                <h4 class="list-group-item-heading count">1000</h4>
+                <h4 class="list-group-item-heading count">{{statistics.duration}}</h4>
                 <p class="list-group-item-text">Minutes</p>
             </a>
             <a class="list-group-item distance">
                 <h3 class="pull-right">
                     <i class="icon glyphicon glyphicon-road"></i>
                 </h3>
-                <h4 class="list-group-item-heading count">1000</h4>
+                <h4 class="list-group-item-heading count">{{statistics.distance}}</h4>
                 <p class="list-group-item-text">Miles</p>
             </a>
         </div>
@@ -31,12 +31,12 @@
 </div>
 
 <div class="row">
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <thead>
         <tr>
             <th>When</th>
             <th>Activity</th>
-            <th>Duration</th>
+            <th>Duration(min.)</th>
             <th>Calories</th>
         </tr>
         </thead>

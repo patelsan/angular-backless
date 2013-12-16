@@ -17,16 +17,16 @@
 
         <form name="activity" role="form">
             <div class="form-group col-md-4">
-                <label for="duration">Duration</label>
-                <input type="text" class="form-control" id="duration" placeholder="Duration" ng-model='newActivity.duration' required />
+                <label for="duration">Duration(min.)</label>
+                <input type="text" class="form-control" id="duration" placeholder="Duration" ng-model='newActivity.duration' required only-digits />
             </div>
             <div class="form-group col-md-4">
                 <label for="distance">Distance</label>
-                <input type="number" class="form-control" id="distance" placeholder="Distance" ng-model='newActivity.distance'/>
+                <input type="text" class="form-control" id="distance" placeholder="Distance" ng-model='newActivity.distance' only-digits />
             </div>
             <div class="form-group col-md-4">
                 <label for="calories">Calories</label>
-                <input type="number" class="form-control" id="calories" placeholder="Calories" ng-model='newActivity.calories'/>
+                <input type="text" class="form-control" id="calories" placeholder="Calories" ng-model='newActivity.calories' only-digits />
             </div>
 
         </form>

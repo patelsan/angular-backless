@@ -1,8 +1,11 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
+    <link rel='icon' href='../favicon.ico' type='image/x-icon' />
+    <script type="text/javascript" src="//use.typekit.net/cny6ogg.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <meta charset="utf-8">
-    <title>My AngularJS App</title>
+    <title>TrackIt</title>
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css"/>
     <link rel="stylesheet" href="lib/bootstrap/bootstrap-theme.css"/>
     <link rel="stylesheet" href="lib/bootstrap/datepicker.css"/>
@@ -29,15 +32,15 @@
         <div class="collapse navbar-collapse navbar-ex5-collapse">
             <ul class="nav navbar-nav">
                 <li ng-class="{active: routeIs('/home')}"><a href="#/home">Home</a></li>
-                <li ng-class="{active: routeIs('/dashboard')}" ng-show="authService.isSignedIn"><a href="#/dashboard">Dashboard</a></li>
-                <li ng-class="{active: routeIs('/activities')}" ng-show="authService.isSignedIn"><a href="#/activities">Activities</a></li>
-                <li ng-class="{active: routeIs('/signup')}" ng-show="!authService.isSignedIn"><a href="#/signup">Sign Up</a></li>
-                <li ng-class="{active: routeIs('/signin')}" ng-show="!authService.isSignedIn"><a href="#/signin">Sign In</a></li>
-                <li ng-show="authService.isSignedIn"><a href="#/home" ng-click="authService.logOut()">Sign Out</a></li>
+                <li ng-class="{active: routeIs('/dashboard')}" ng-show="authService.isSignedIn" ng-cloak><a href="#/dashboard">Dashboard</a></li>
+                <li ng-class="{active: routeIs('/activities')}" ng-show="authService.isSignedIn" ng-cloak><a href="#/activities">Activities</a></li>
+                <li ng-class="{active: routeIs('/signup')}" ng-show="!authService.isSignedIn" ng-cloak><a href="#/signup">Sign Up</a></li>
+                <li ng-class="{active: routeIs('/signin')}" ng-show="!authService.isSignedIn" ng-cloak><a href="#/signin">Sign In</a></li>
+                <li ng-show="authService.isSignedIn"><a href="#/home" ng-click="authService.logOut()" ng-cloak>Sign Out</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><div class="user-name" ng-show="authService.isSignedIn">Hello {{authService.fullName}}</div></li>
+                <li><div class="user-name" ng-show="authService.isSignedIn" ng-cloak>Hello {{authService.fullName}}</div></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

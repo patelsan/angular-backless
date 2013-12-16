@@ -17,7 +17,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
           var activitiesRepository = new utils.Repository();
 
           userRepository.save({email: 'x', password:'x', fullName: 'Test User'});
-          activitiesRepository.save({userId: 101,workoutDate: 'Nov, 28',activityType: 'Running', duration: '0:30', calories: 356});
+          activitiesRepository.save({userId: 101,workoutDate: '2013-12-15T11:53:25.956Z',activityType: 'Running', duration: 30, calories: 356, distance: 1.2});
 
           $httpBackend.whenPOST('/api/signin').respond(function(method, url, data){
               var request = JSON.parse(data);
@@ -43,6 +43,13 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
                 return [200, {registered: true, message: 'Thank you for signing up.'}];
               }
           });
+
+        $httpBackend.whenGET(/api\/(\d+)\/activity\/statistics/).respond(function(method, url, data){
+            var searchResult = url.match(/api\/(\d+)\/activity/);
+            var userId = parseInt(searchResult[1]);
+
+            return [200, activitiesRepository.statistics({userId: userId})];
+        });
 
          $httpBackend.whenGET(/api\/(\d+)\/activity/).respond(function(method, url, data){
              var searchResult = url.match(/api\/(\d+)\/activity/);

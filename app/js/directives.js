@@ -19,8 +19,9 @@ directives.directive('datepicker',['moment',function(moment){
         link: function($scope, element, attribs, model){
             var pickerElement = $(element.children()[0]);
             var picker = pickerElement.datepicker();
-            //picker.datepicker('update', new Date());
-            //model.$setViewValue(new Date().toDateString());
+            //pickerElement.datepicker('setValue', new Date().toDateString());
+            //pickerElement.datepicker('update');
+            model.$setViewValue(new Date().toDateString());
 
             picker.on('changeDate',function(e){
                 $scope.$apply(function(){
@@ -70,4 +71,26 @@ directives.directive('timepicker', function(){
     };
 
     return definition;
+});
+
+directives.directive('onlyDigits', function () {
+
+    return {
+        require: 'ngModel',
+        bindAttr: '=',
+        link: function (scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function (inputValue) {
+                if (!inputValue) return;
+                var transformedInput = inputValue.split('').filter(function (s) { return ((s == '.' || !isNaN(s)) && s != ' '); }).join('');
+                transformedInput = Number(transformedInput);
+
+                if (transformedInput!=inputValue) {
+                    modelCtrl.$setViewValue(transformedInput);
+                    modelCtrl.$render();
+                }
+
+                return transformedInput;
+            });
+        }
+    };
 });

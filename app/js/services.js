@@ -67,5 +67,6 @@ services.factory('authService', ['$http','$q', function($http, $q){
 
 //Models/ Resources
 services.factory('Activity', ['$resource','authService', function($resource, authService){
-    return $resource('api/:userId/activity', {userId: authService.userId});
+    return $resource('api/:userId/activity', {userId: authService.userId},
+        {statistics: {url:'api/:userId/activity/statistics', method: 'GET', params: {userId: authService.userId}, isArray: false}});
 }]);
