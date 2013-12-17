@@ -60,7 +60,7 @@ utils.Repository = (function(){
         var activities = _.select(this.items, critaria);
         var stats = {totalActivities: activities.length, calories: 0, distance: 0, duration: 0};
 
-        _.forEach(this.items, function(activity){
+        _.forEach(activities, function(activity){
             if(_.isNumber(activity.calories))
                 stats.calories += activity.calories;
 
@@ -71,6 +71,11 @@ utils.Repository = (function(){
                 stats.duration += activity.duration;
         });
 
+        //Round it
+        stats.calories = Math.round(stats.calories);
+        stats.distance = Math.round(stats.distance);
+        stats.duration = Math.round(stats.duration);
+
         //Weekly calories burn
         var weeklyBurning = {};
         _.forEach(moment.weekdaysShort(), function(day){
@@ -78,7 +83,7 @@ utils.Repository = (function(){
         });
 
         var currentWeek = new moment().week();
-        var currentWeekActivities =_.filter(this.items, function(activity){
+        var currentWeekActivities =_.filter(activities, function(activity){
             return moment(activity.workoutDate).week() == currentWeek;
         });
 

@@ -16,8 +16,14 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
           var userRepository = new utils.Repository();
           var activitiesRepository = new utils.Repository();
 
-          userRepository.save({email: 'x', password:'x', fullName: 'Test User'});
-          activitiesRepository.save({userId: 101,workoutDate: '2013-12-15T11:53:25.956Z',activityType: 'Running', duration: 30, calories: 356, distance: 1.2});
+          userRepository.save({email: 'x', password:'x', fullName: 'Tom'});
+          activitiesRepository.save({userId: 101,workoutDate: new Date().setDate(new Date().getDate()-7),activityType: 'Running', duration: 22, calories: 280, distance: 2.2});
+          activitiesRepository.save({userId: 101,workoutDate: new Date().setDate(new Date().getDate()-6),activityType: 'Running', duration: 28, calories: 310, distance: 3.2});
+          activitiesRepository.save({userId: 101,workoutDate: new Date().setDate(new Date().getDate()-5),activityType: 'Running', duration: 28, calories: 310, distance: 3});
+          activitiesRepository.save({userId: 101,workoutDate: new Date().setDate(new Date().getDate()-4),activityType: 'Running', duration: 34, calories: 360, distance: 3});
+          activitiesRepository.save({userId: 101,workoutDate: new Date().setDate(new Date().getDate()-2),activityType: 'Running', duration: 25, calories: 290, distance: 2});
+          activitiesRepository.save({userId: 101,workoutDate: new Date().setDate(new Date().getDate()-1),activityType: 'Running', duration: 32, calories: 350, distance: 2});
+          activitiesRepository.save({userId: 101,workoutDate: new Date(),activityType: 'Running', duration: 22, calories: 200, distance: 1.2});
 
           $httpBackend.whenPOST('/api/signin').respond(function(method, url, data){
               var request = JSON.parse(data);

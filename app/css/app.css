@@ -36,8 +36,7 @@ body {
 .user-name {
     padding-top: 15px;
     padding-bottom: 15px;
-    font-weight: bold;
-    color: midnightblue;
+    color: #6D6D6D;
 }
 
 /* date picker style */
@@ -65,3 +64,35 @@ body {
     display: none !important;
 }
 
+/* Overrides */
+.btn {
+    display: inline-block;
+    /*padding: 6px 12px;*/
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.note{
+    font-size: 13px;
+    color: #A5A5A5;
+}

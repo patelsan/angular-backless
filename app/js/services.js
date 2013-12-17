@@ -12,7 +12,8 @@ services.factory('moment', function(){
 });
 
 services.factory('authService', ['$http','$q', function($http, $q){
-    var isSignedIn = false, fullName, authToken, fasad;
+    var isSignedIn = false, fullName, authToken;
+    var fasad = {};
 
     var authenticate = function(user){
         var deferred = $q.defer();
@@ -53,14 +54,14 @@ services.factory('authService', ['$http','$q', function($http, $q){
         fullName = '';
     };
 
-    fasad = {
-        signIn: function(user){return authenticate(user);},
-        signUp: function(user){return register(user);},
-        logOut: function(){ return logOut()},
-        isSignedIn: false,
-        fullName: '',
-        userId: null
-    };
+    //fasad = {
+    fasad.signIn = function(user){return authenticate(user);};
+    fasad.signUp = function(user){return register(user);};
+    fasad.logOut = function(){ return logOut()};
+    fasad.isSignedIn = false;
+    fasad.fullName = '';
+    fasad.userId = null;
+    //};
 
     return fasad;
 }]);
