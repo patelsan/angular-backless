@@ -12,7 +12,7 @@ services.factory('moment', function(){
 });
 
 services.factory('authService', ['$http','$q', function($http, $q){
-    var isSignedIn = false, fullName, authToken;
+    var isSignedIn = false, fullName;
     var fasad = {};
 
     var authenticate = function(user){
@@ -54,20 +54,18 @@ services.factory('authService', ['$http','$q', function($http, $q){
         fullName = '';
     };
 
-    //fasad = {
     fasad.signIn = function(user){return authenticate(user);};
     fasad.signUp = function(user){return register(user);};
     fasad.logOut = function(){ return logOut()};
     fasad.isSignedIn = false;
     fasad.fullName = '';
     fasad.userId = null;
-    //};
 
     return fasad;
 }]);
 
 //Models/ Resources
 services.factory('Activity', ['$resource','authService', function($resource, authService){
-    return $resource('api/:userId/activity', {userId: authService.userId},
-        {statistics: {url:'api/:userId/activity/statistics', method: 'GET', params: {userId: authService.userId}, isArray: false}});
+    return $resource('api/:userId/activity', {userId: function(){return authService.userId;}},
+        {statistics: {url:'api/:userId/activity/statistics', method: 'GET', params: {userId: function(){return authService.userId;}}, isArray: false}});
 }]);
